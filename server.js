@@ -39,7 +39,7 @@ app.post('/signup', async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       res.status(409).json({ message: 'User already exists' }); // this line directly closes the server and ends the process
-      // console.log('fuck you')  // While this doesn't do that
+      // console.log('User already exists!')  // While this doesn't do that
     }
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -69,14 +69,14 @@ app.post('/login', async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      res.status(404).json({ message: 'User not found' });
     }
 
     // Compare the provided password with the hashed password
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: 'Invalid password' });
+      res.status(401).json({ message: 'Invalid password' });
     }
 
     // res.status(200).json({ message: 'Login successful' });

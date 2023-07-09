@@ -13,7 +13,6 @@ const App = () => {
         password
       });
 
-      // const data = await response.json();
       console.log(response.data);
     } catch (error) {
       console.error(error);
