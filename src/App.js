@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [li, setLi] = useState(false)  // Short for Logged In (Li)
+  const [li, setLi] = useState()  // Short for Logged In (Li)
   const handleSignup = async () => {
     try {
       const response = await axios.post('http://localhost:5000/signup', {
@@ -37,7 +37,7 @@ const App = () => {
   return (
 
     <div>
-      <Navbar isloggedin={li} />
+      <Navbar isloggedin={li} username={email} />
       <h1>Signup</h1>
       <input
         type="email"
@@ -67,12 +67,7 @@ const App = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      {li && (
-        <h1>Welcome, {email}</h1>
-      )}
-      {!li && (
-        <h1>Wrong credentials!</h1>
-      )}
+      
 
     </div>
   );

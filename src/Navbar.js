@@ -2,7 +2,6 @@ import React from 'react'
 
 const Navbar = (props) => {
     return (
-
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
             <a className="navbar-brand" href="#">Navbar</a>
@@ -17,8 +16,8 @@ const Navbar = (props) => {
                     </li>
                     {props.isloggedin &&
 
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Create</a>
+                        <li className="nav-item active">
+                            <a className='nav-link' href='#'>Welcome  {props.username}</a>
                         </li>
                     }
                 </ul>
