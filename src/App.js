@@ -35,7 +35,6 @@ const App = () => {
   };
 
   return (
-
     <div>
       <Navbar isloggedin={li} username={email} />
       <h1>Signup</h1>
