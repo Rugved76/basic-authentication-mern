@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import Navbar from './Navbar';
 
 const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [li,setLi] = useState(false)  // Short for Logged In (Li)
-
+  const [li, setLi] = useState(false)  // Short for Logged In (Li)
   const handleSignup = async () => {
     try {
       const response = await axios.post('http://localhost:5000/signup', {
@@ -30,12 +30,14 @@ const App = () => {
       console.log(response.data);
     } catch (error) {
       console.error(error);
-      setLi(false)
+      // setLi(false)
     }
   };
 
   return (
+
     <div>
+      <Navbar isloggedin={li} />
       <h1>Signup</h1>
       <input
         type="email"
